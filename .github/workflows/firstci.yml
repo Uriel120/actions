@@ -6,6 +6,9 @@ jobs:
   my_first_djob:
     runs-on: ubuntu-latest
     steps:
+    - name: get repository
+      uses: action/checkout@v4
+      
     - name: welcome message
       run: echo "Welcome to learn github actions "
 
@@ -13,5 +16,5 @@ jobs:
       run: ls
 
     - name: read file
-      run: cat Readme.md
+      run: cat README.md
   
