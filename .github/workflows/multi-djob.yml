@@ -1,0 +1,32 @@
+name: multi jobs 
+on: push 
+jobs:
+    build-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: installer cowsay
+              run: sudo apt-get install cowsay -y
+            
+            - name: creation du fichier 
+              run: cowsay -f dragon "Run to cover i'am a dragon .... RAWWR" >> dragon.txt
+
+            - name: temps d'attente
+              run: sleep 30
+    test-job:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: attaente 
+              run: sleep 10
+            
+            - name: recherche du fichier 
+              run: grep -i dragon "dragon.txt"
+
+    deploy-job:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: deployement object 
+              run: cat dragon.txt
+
+            - name: affichage
+              run: echo " deploying ... ..."
+
