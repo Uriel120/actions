@@ -1,0 +1,24 @@
+name: Generate ascii code 
+
+on: push
+
+jobs:
+    genarate-acii:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: pull le repo
+              uses: actions/checkout@v4
+            - name: installer cawsay
+              run: sudo apt-get install cawsay -y 
+            - name: Generate ascii code
+              run: cowsay -f dragron "Run to cover i'am a dragon .... RAWWR" >> draggon.txt
+
+            - name: verifier l'exitance du fichier
+              run: grep -i dragron "dragon.txt"
+
+            - name: lire les fichiers
+              run: cat dragon.txt
+
+            - name: lister les fichiers
+              run: ls -l
+
