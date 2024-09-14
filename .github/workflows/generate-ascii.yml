@@ -9,7 +9,7 @@ jobs:
             - name: pull le repo
               uses: actions/checkout@v4
             - name: installer cawsay
-              run: sudo apt-get install cawsay -y 
+              run: sudo apt-get install cowsay -y 
             - name: Generate ascii code
               run: cowsay -f dragron "Run to cover i'am a dragon .... RAWWR" >> draggon.txt
 
