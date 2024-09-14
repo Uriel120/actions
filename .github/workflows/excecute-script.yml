@@ -1,0 +1,13 @@
+name: execution de script 
+
+on: push 
+
+jobs:
+    script-jobs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: cloner le repo
+              uses: actions/checkout@v4
+            
+            - name: executer le script
+              run: ./shell-script.sh
