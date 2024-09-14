@@ -8,15 +8,15 @@ jobs:
         steps: 
             - name: pull le repo
               uses: actions/checkout@v4
-              
+
             - name: installer cawsay
               run: sudo apt-get install cowsay -y 
 
             - name: Generate ascii code
-              run: cowsay -f dragron "Run to cover i'am a dragon .... RAWWR" >> dragon.txt
+              run: cowsay -f dragon "Run to cover i'am a dragon .... RAWWR" >> dragon.txt
 
             - name: verifier l'exitance du fichier
-              run: grep -i dragron "dragon.txt"
+              run: grep -i dragon "dragon.txt"
 
             - name: lire les fichiers
               run: cat dragon.txt
