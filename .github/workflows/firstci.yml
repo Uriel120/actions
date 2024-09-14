@@ -9,12 +9,12 @@ jobs:
     - name: get repository
       uses: actions/checkout@v4
 
-    - name: welcome message
-      run: echo "Welcome to learn github actions "
-
-    - name: list file 
-      run: ls
-
     - name: read file
-      run: cat README.md
+      run: | 
+        echo "Welcome to learn github actions "
+        ls -l
+        cat README.md
+
+    - name: Generate ascii code
+      run: cowsay -f dragron "Run to cover i'am a dragon .... RAWWR" >> draggon.txt
   
