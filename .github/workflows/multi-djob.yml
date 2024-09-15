@@ -10,15 +10,25 @@ jobs:
             - name: creation du fichier 
               run: cowsay -f dragon "Run to cover i'am a dragon .... RAWWR" >> dragon.txt
 
-            - name: temps d'attente
-              run: sleep 30
+            - name: upload file to artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: chemin du fichier dragon
+                path: dragon.txt
+
     test-job:
         needs: build-job
         runs-on: ubuntu-latest
         steps: 
             - name: attaente 
-              run: sleep 10
-            
+              run: sleep 3
+
+            - name: download file to artifact
+              uses: actions/download-artifact@v4
+              with:
+                name: chemin du fichier dragon
+                path: dragon.txt
+
             - name: recherche du fichier 
               run: grep -i dragon "dragon.txt"
 
@@ -26,6 +36,12 @@ jobs:
         needs: test-job
         runs-on: ubuntu-latest
         steps: 
+            - name: download file to artifact
+              uses: actions/download-artifact@v4
+              with:
+                name: chemin du fichier dragon
+                path: dragon.txt
+
             - name: deployement object 
               run: cat dragon.txt
 
