@@ -14,11 +14,11 @@ on:
             tags:
                 description: 'Test scenatio tags'
                 required: false
-                type: boolean
-            environment:
-                description: 'Environnement de test'
-                type: environment
-                required: true
+                type: number
+            # environment:
+            #     description: 'Environnement de test'
+            #     type: environment
+            #     required: true
 jobs:
     log-the-inputs:
         runs-on: ubuntu-latest
