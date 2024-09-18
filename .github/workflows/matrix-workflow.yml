@@ -1,6 +1,8 @@
 #Le principe des matrix dans GitHub Actions permet d'exécuter un même job plusieurs 
 #fois avec des combinaisons différentes de paramètres. Cela est particulièrement utile 
 #pour tester une application sur plusieurs versions de langages, systèmes d'exploitation ou configurations.
+#Les paramètres include et exclude sont utilisés pour ajouter ou exclure des combinaisons spécifiques de 
+#configurations dans une matrix, permettant ainsi de personnaliser précisément les scénarios d'exécution
 
 name: matrix configuration
 on:
@@ -9,9 +11,17 @@ on:
 jobs:
     deploy:
         strategy:
+            fail-fast: false
+            max-parallel: 2
             matrix:
                 os: [ubuntu-latest, ubuntu-20.04, windows-latest]
                 images: [hello-world,alpine]
+                exclude:
+                    - images: alpine
+                      os: windows-latest
+                include:
+                  - images: amd64/alpine
+                    os: ubuntu-20.04
         runs-on: ${{matrix.os}}
         steps:
             - name: display docker info
