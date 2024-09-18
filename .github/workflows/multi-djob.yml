@@ -33,6 +33,9 @@ jobs:
 
     deploy-job:
         needs: test-job
+        concurrency: 
+          group: stagging 
+          cancel-in-progress: true 
         runs-on: ubuntu-latest
         steps: 
             - name: download file to artifact
@@ -45,4 +48,6 @@ jobs:
 
             - name: affichage
               run: echo " deploying ... ..."
+            - name: add sleep time
+              run: sleep 200
 
