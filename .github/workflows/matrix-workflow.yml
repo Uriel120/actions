@@ -1,0 +1,21 @@
+#Le principe des matrix dans GitHub Actions permet d'exécuter un même job plusieurs 
+#fois avec des combinaisons différentes de paramètres. Cela est particulièrement utile 
+#pour tester une application sur plusieurs versions de langages, systèmes d'exploitation ou configurations.
+
+name: matrix configuration
+on:
+    push:
+    workflow_dispatch:
+jobs:
+    deploy:
+        strategy:
+            matrix:
+                os:[ubuntu-latest,ubuntu-20.04,windows-latest]
+                image:[hello-world,alpine]
+        runs-on: ${{matrix.os}}
+        steps:
+            - name: display docker info
+              run: docker info
+            - name: run image on ${{matrix.os}}
+              run: docker run ${{matrix.image}}
+

@@ -1,3 +1,10 @@
+#La concurrence permet de définir des règles, soit au niveau des jobs, soit au niveau du workflow.
+#Ces règles déterminent le comportement à adopter lorsqu'un nouveau push survient pendant une exécution en cours.
+# Deux approches sont possibles :
+  #Autoriser un seul déploiement à la fois. Dans ce cas, le nouveau push remplace l'exécution en cours,
+  # qui est annulée (cancel-in-progress : true).
+  #Conserver l'exécution en cours. On attend qu'elle se termine avant d'exécuter le nouveau push.(cancel-in-progress: false)
+
 name: multi jobs 
 on: workflow_dispatch
 jobs:
