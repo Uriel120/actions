@@ -1,0 +1,33 @@
+name: Workflow dispacth test
+on: 
+    workflow_dispatch:
+        inputs:
+            loglevel:
+                description: 'Log Level'
+                required: true
+                default: 'warning'
+                type: choice
+                options:
+                    - info
+                    - warning
+                    - debug
+            tags:
+                description: 'Test scenatio tags'
+                required: false
+                type: boolean
+            environment:
+                description: 'Environnement de test'
+                type: environment
+                required: true
+jobs:
+    log-the-inputs:
+        runs-on: ubuntu-latest
+        steps:
+        - run: |
+            echo "Log level: $LEVEL"
+            echo "Tags: $TAGS"
+            echo "Environment: $ENVIRONMENT"
+            env:
+            LEVEL: ${{ inputs.logLevel }}
+            TAGS: ${{ inputs.tags }}
+            ENVIRONMENT: ${{ inputs.environment }}

@@ -17,7 +17,7 @@ jobs:
                 path: dragon.txt
 
     test-job:
-        needs: build-job
+        needs: build-job # ce element est utiliser pour lancer les job de maniere sequentiel ( build-job sera executer avant test-job)
         runs-on: ubuntu-latest
         steps: 
             - name: attaente 
